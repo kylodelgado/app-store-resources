@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account - Practica ENURM</title>
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a2151 0%, #2d3748 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            margin-bottom: 20px;
+        }
+        
+        .warning-card {
+            background: rgba(245, 101, 101, 0.1);
+            border: 1px solid rgba(245, 101, 101, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .warning-card h3 {
+            color: #f56565;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .warning-card ul {
+            color: #fbb6ce;
+            padding-left: 20px;
+        }
+        
+        .warning-card li {
+            margin-bottom: 8px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .instructions {
+            background: rgba(79, 172, 254, 0.1);
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions h3 {
+            color: #4facfe;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .instructions p {
+            color: #a0aec0;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        .instructions ul {
+            color: #a0aec0;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .email-template {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #4facfe;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+        
+        .email-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 101, 101, 0.4);
+        }
+        
+        .back-btn {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: #4facfe;
+            border: 1px solid #4facfe;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .back-btn:hover {
+            background: rgba(79, 172, 254, 0.1);
+        }
+        
+
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Delete Account</h1>
+            <p>Request permanent deletion of your Practica ENURM account and data</p>
+        </div>
+        
+        <div class="warning-card">
+            <h3>⚠️ Important Information</h3>
+            <ul>
+                <li><strong>This action cannot be undone.</strong> All your data will be permanently deleted.</li>
+                <li>Your study progress, achievements, and statistics will be lost.</li>
+                <li>You will no longer be able to access premium features (if applicable).</li>
+                <li>Account deletion may take up to 30 days to complete.</li>
+                <li>Some data may be retained for legal compliance purposes.</li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>📧 How to Request Account Deletion</h3>
+            <p>To request deletion of your Practica ENURM account and all associated data, please send an email with the required information below.</p>
+            <ul>
+                <li>We will process your request within <strong>30 days</strong></li>
+                <li>You will receive a confirmation email once deletion is complete</li>
+                <li>This action cannot be undone</li>
+            </ul>
+        </div>
+        
+        <div class="info-card">
+            <h3 style="color: #4facfe; margin-bottom: 20px;">Email Template</h3>
+            <p style="color: #a0aec0; margin-bottom: 16px;">Copy the template below and send it to our support email:</p>
+            
+            <div class="email-template" id="emailTemplate">
+Subject: Account Deletion Request - Practica ENURM
+
+Dear Practica ENURM Support Team,
+
+I am requesting the permanent deletion of my account and all associated data from the Practica ENURM application.
+
+Account Email: [Your email address]
+Reason for Deletion: [Optional - e.g., privacy concerns, no longer needed, etc.]
+Additional Information: [Optional - any additional details]
+
+I understand that:
+- This action is permanent and cannot be undone
+- All my study progress, achievements, and statistics will be lost
+- Account deletion may take up to 30 days to complete
+- Some data may be retained for legal compliance purposes
+
+Please confirm once my account has been deleted.
+
+Thank you,
+[Your name]
+            </div>
+            
+            <button class="copy-btn" onclick="copyEmailTemplate()">
+                📋 Copy Email Template
+            </button>
+            
+            <a href="mailto:ENURM@aplicadom.com?subject=Account%20Deletion%20Request%20-%20Practica%20ENURM&body=Dear%20Practica%20ENURM%20Support%20Team%2C%0A%0AI%20am%20requesting%20the%20permanent%20deletion%20of%20my%20account%20and%20all%20associated%20data%20from%20the%20Practica%20ENURM%20application.%0A%0AAccount%20Email%3A%20%5BYour%20email%20address%5D%0AReason%20for%20Deletion%3A%20%5BOptional%5D%0AAdditional%20Information%3A%20%5BOptional%5D%0A%0AI%20understand%20that%3A%0A-%20This%20action%20is%20permanent%20and%20cannot%20be%20undone%0A-%20All%20my%20study%20progress%2C%20achievements%2C%20and%20statistics%20will%20be%20lost%0A-%20Account%20deletion%20may%20take%20up%20to%2030%20days%20to%20complete%0A-%20Some%20data%20may%20be%20retained%20for%20legal%20compliance%20purposes%0A%0APlease%20confirm%20once%20my%20account%20has%20been%20deleted.%0A%0AThank%20you" 
+               class="email-btn">
+                📧 Send Deletion Request Email
+            </a>
+            
+            <a href="./support-en.html" class="back-btn">
+                Back to Support
+            </a>
+        </div>
+        
+
+    </div>
+
+    <script>
+        // Copy email template function
+        function copyEmailTemplate() {
+            const template = document.getElementById('emailTemplate').textContent;
+            
+            // Try to use the modern clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(template).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(template);
+                });
+            } else {
+                // Fallback for older browsers or non-HTTPS
+                fallbackCopyTextToClipboard(template);
+            }
+        }
+        
+        // Fallback copy method
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+                showCopyError();
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        // Show copy success feedback
+        function showCopySuccess() {
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            btn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';
+            }, 2000);
+        }
+        
+        // Show copy error feedback
+        function showCopyError() {
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '❌ Copy failed';
+            btn.style.background = 'linear-gradient(135deg, #f56565 0%, #e53e3e 100%)';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 
